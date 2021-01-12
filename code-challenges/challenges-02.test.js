@@ -10,7 +10,13 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 
 const raisedToTheThird = (arr) => {
   // Solution code here...
-}
+  const raisedArray = [];
+  arr.forEach((number) => {
+    const raised = Math.pow(number, 3); //Math.pow()info from MDN docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow
+    raisedArray.push(raised);
+  });
+  return raisedArray;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -113,7 +119,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-describe('Testing challenge 2', () => {
+xdescribe('Testing challenge 2', () => {
   test('It should append without modifying the oiginal', () => {
     const a = 'This is my story.';
     const b = appendTheEnd(a);
@@ -123,7 +129,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+xdescribe('Testing challenge 3', () => {
   test('It should append by modifying the oiginal', () => {
     const a = ['Yes', 'it', 'is'];
     appendFirstToLast(a);
@@ -132,7 +138,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+xdescribe('Testing challenge 4', () => {
   test('It should add a property to an object', () => {
     const a = { fullName: 'Octavia Butler' };
     addBirthYearProperty(a, 1947);
