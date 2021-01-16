@@ -81,6 +81,7 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
+  return (arr.split(''));
 };
 
 
@@ -126,9 +127,26 @@ const gruffaloCrumble = {
 
 
 const listFoods = (recipe) => {
-  let result = [];
   // Solution code here...
+  let result = [];
+  let firstSlice;
+  recipe.ingredients.forEach((ingredient) => {
+    let indexLocation = ingredient.indexOf(' ');
+    firstSlice = ingredient.slice(indexLocation + 1);
+    let secondSlice = firstSlice.slice(firstSlice.indexOf(' ')+1);
+    result.push(secondSlice);
+  });
   return result;
+  // notes from Chance
+  // going to access object
+  // loop over ingredients
+  // recipe.ingredients.forEach();
+  // create a string already sliced once to then slice a second time - not going to be able to slice original string in one step
+  //slice does not modify the original string either
+  //have to assign slices to variables so they hold value
+  //all slices and definitions need to happen inside of loop
+  //then can push to result container
+  // return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -266,7 +284,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
@@ -275,7 +293,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return a list of foods', () => {
     expect(listFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
     expect(listFoods(gruffaloCrumble).length).toStrictEqual(11);
