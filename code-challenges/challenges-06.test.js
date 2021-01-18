@@ -108,7 +108,7 @@ Write a function named getHouses that returns a new array containing the names o
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
-  Object.values(characters).forEach(character => {
+  Object.values(arr).forEach(character => {
     houses.push(character.house);
   });
   return houses;
