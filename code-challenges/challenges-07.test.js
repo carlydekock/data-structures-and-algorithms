@@ -37,7 +37,7 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
-  const newArray = arr.map(number => (Math.pow(2, number)));
+  const newArray = arr.map(number => Math.pow(2, number));
   return newArray;
 };
 /* ------------------------------------------------------------------------------------------------
@@ -48,6 +48,12 @@ Write a function named forEachTwoToThe that produces the same output as your for
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
+  const newArr = [];
+  arr.forEach(value => {
+    const newValue = Math.pow(2, value);
+    newArr.push(newValue);
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -210,7 +216,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
