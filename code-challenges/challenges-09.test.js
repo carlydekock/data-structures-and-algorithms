@@ -207,9 +207,10 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
-  // arr.reduce((accumulator, value, index, array) => {
-
-  // })
+  const arrayLength = arr.reduce(accumulator => {
+    return accumulator + 1;
+  }, 0);
+  return arrayLength;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -269,8 +270,16 @@ let starWarsData = [{
   gender: 'female'
 }];
 
+// Write a function named returnNames that, given the Star Wars data, below, uses reduce to return an array containing the names of the characters.
+
 const returnNames = (arr) => {
   // Solution code here...
+  // From: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+  // From: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+  const newArray = arr.reduce((accumulator, value) => {
+    return accumulator.concat(value.name);
+  }, []);
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -283,6 +292,11 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
+  const splitString = str.split('');
+  const newString = splitString.reduce((accumulator, letter) => {
+    return letter + accumulator;
+  }, '');
+  return newString;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -471,20 +485,20 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return the length of the array', () => {
     expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return an array continaing the names of the characters', () => {
     expect(returnNames(starWarsData)).toStrictEqual(['Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa']);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the string with the characters in reverse order', () => {
     expect(reversedString('Code 301')).toStrictEqual('103 edoC');
   });
