@@ -42,7 +42,17 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
-
+  const reduceArray = input.reduce((accumulator, value) => {
+    return accumulator.concat(value);
+  }, []);
+  const filterArray = reduceArray.filter(value2 => {
+    if(value2 === target){
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return filterArray.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -57,6 +67,13 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  const reduceArray = input.reduce((accumulator, value) => {
+    return accumulator.concat(value);
+  }, []);
+  const sumArray = reduceArray.reduce((accumulator, value) => {
+    return accumulator + value;
+  });
+  return sumArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -73,6 +90,7 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -201,7 +219,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return the number of times the input is in the nested arrays', () => {
     expect(count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(4);
     expect(count(3, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(2);
@@ -213,7 +231,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should add all the numbers in the arrays', () => {
     const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]];
 
