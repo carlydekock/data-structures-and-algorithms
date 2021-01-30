@@ -90,7 +90,20 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
-
+  const outputArray = input.map(arrayValue => {
+    const secondOutput = arrayValue.filter(secondValue => {
+      if (typeof secondValue === 'string'){
+        return '';
+      } else {
+        return secondValue % 5 === 0;
+      }
+    });
+    // console.log(secondOutput);
+    const raised = secondOutput.map(thirdValue => Math.pow(2, thirdValue));
+    // console.log(raised);
+    return raised;
+  });
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -157,6 +170,20 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  // console.log(data);
+  const entries = data.filter(firstValue => {
+    if(firstValue.gender.match('male' || 'female')){
+      return true;
+    } else {
+      return false;
+    }
+  });
+  const namesValues = entries.reduce((acc, val) => {
+    return acc + `${val.name} `;
+  }, '');
+  console.log(namesValues);
+  // const addedAnd = namesValues.splice(2,0,'and');
+  // return addedAnd;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -167,6 +194,16 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
+  const array = data.map(person => {
+    // const filtered = person.filter(heightValue => {
+    //   console.log(heightValue);
+    // });
+    // return heightValue;
+    // const filteredHeight = heightValue.filter(value => {
+    //   console.log(value);
+    // });
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
