@@ -11,6 +11,8 @@ Cheerio is a alternative implementation of jQuery that works on server
 Use Cheerio with jQuery syntax to fix the typo
 ------------------------------------------------------------------------------------------------ */
 
+// Test comment
+
 const $ = createSnippetWithJQuery(`
 <ul id="fruits">
   <li class="apple">Apple</li>
