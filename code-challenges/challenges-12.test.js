@@ -44,7 +44,15 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
-  // console.log(stores);
+  const array = new Array(12).fill(0);
+  for (let i = 0; i < cookieStores.length; i++){
+    let thisStore = cookieStores[i];
+    for (let j = 0; j < stores[i].length; j++){
+      array[j] += thisStore[j];
+    }
+    // console.log(array);
+  }
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,6 +67,23 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 
 const salesData = (hours, data) => {
   // Solution code here...
+  const newArray = [];
+  const newObject = {};
+  newObject['sales'] = `${data[0]} cookies`;
+  newObject['hours'] = hours[0];
+  newArray.push(newObject);
+  console.log(newArray);
+  // console.log('this is hours: ', hours, 'this is data: ', data);
+  // const array = hours.forEach(value => {
+  //   // console.log(value);
+  //   newObject
+  //   const piece = `sales: '${data[0]}', 'time': '${value}'}`;
+  //   newArray.push(piece);
+  //   console.log(newArray);
+  //   // for (let i = 0; i < hours.length; i++){
+  //   //   console.log('this is value', value, 'this is data at i', data[i]);
+  //   // }
+  // });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,6 +109,7 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  return arr[2].items[1].quantity;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -224,7 +250,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the number 24', () => {
     expect(howManyTreats(errands)).toStrictEqual(24);
   });
