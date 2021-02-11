@@ -11,7 +11,7 @@ E.g. [4,2,7,5,9,2] -> 9
 const maxInArray = (arr) => {
   // Solution code here...
   const maxValue = arr.reduce((accumulator, value) => {
-    if(accumulator > value){
+    if (accumulator > value) {
       return accumulator;
     } else {
       return value;
@@ -45,9 +45,9 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 const grandTotal = (stores) => {
   // Solution code here...
   const array = new Array(12).fill(0);
-  for (let i = 0; i < cookieStores.length; i++){
+  for (let i = 0; i < cookieStores.length; i++) {
     let thisStore = cookieStores[i];
-    for (let j = 0; j < stores[i].length; j++){
+    for (let j = 0; j < stores[i].length; j++) {
       array[j] += thisStore[j];
     }
     // console.log(array);
@@ -68,22 +68,17 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 const salesData = (hours, data) => {
   // Solution code here...
   const newArray = [];
-  const newObject = {};
-  newObject['sales'] = `${data[0]} cookies`;
-  newObject['hours'] = hours[0];
-  newArray.push(newObject);
-  console.log(newArray);
-  // console.log('this is hours: ', hours, 'this is data: ', data);
-  // const array = hours.forEach(value => {
-  //   // console.log(value);
-  //   newObject
-  //   const piece = `sales: '${data[0]}', 'time': '${value}'}`;
-  //   newArray.push(piece);
-  //   console.log(newArray);
-  //   // for (let i = 0; i < hours.length; i++){
-  //   //   console.log('this is value', value, 'this is data at i', data[i]);
-  //   // }
-  // });
+  // console.log('this is hours', hours, 'this is data', data);
+  data.forEach((hourlyTotal, i) => {
+    const newObject = {};
+    newObject['sales'] = `${hourlyTotal} cookies`;
+    newObject['time'] = `${hours[i]}`;
+    // console.log('this is hours at i', hours[i]);
+    // console.log('this is hourly total', hourlyTotal);
+    newArray.push(newObject);
+  });
+  return newArray;
+  // console.log(newArray);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -229,7 +224,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should create an object of data for each store', () => {
     expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
       { sales: '88 cookies', time: '9 a.m.' },
